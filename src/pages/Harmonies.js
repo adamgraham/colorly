@@ -18,7 +18,7 @@ const routes = {
     name: 'Complement',
   },
   splitComplement: {
-    path: '/harmonies/splitcomplement',
+    path: '/harmonies/split-complement',
     name: 'Split Complement',
   },
   analogous: {

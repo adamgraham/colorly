@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { AppHeader } from './components';
 import Routes from './routes';
@@ -20,7 +20,7 @@ const App = () => (
 
 const Root = () => (
   <Provider store={store}>
-    <Router history={history}>
+    <Router history={history} basename="/colorly">
       <App />
     </Router>
   </Provider>

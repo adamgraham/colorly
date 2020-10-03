@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -29,6 +29,12 @@ const AppHeader = ({
       return history.location.pathname.includes(route.path);
     }
   });
+
+  useEffect(() => {
+    if (!matchedRoute) {
+      history.push(routes.tintsAndShades.path);
+    }
+  }, [matchedRoute, history]);
 
   const openPageMenu = (event) => {
     setPageMenuAnchor(event.currentTarget);

@@ -10,7 +10,7 @@ import {
 
 export const routes = {
   tintsAndShades: {
-    path: '/',
+    path: '/tints-and-shades',
     name: 'Tints & Shades',
     component: TintsAndShades,
     exact: true,
