@@ -59,7 +59,7 @@ const AppHeader = ({
           onClick={handleOpenPageMenu}
           startIcon={<MaterialIcon>menu</MaterialIcon>}
         >
-          <b className="app-header__title eyebrow-18pt weight-semibold margin-none">
+          <b className="app-header__title">
             {(matchedRoute && matchedRoute.name) || 'Color Tools'}
           </b>
         </MaterialButton>
