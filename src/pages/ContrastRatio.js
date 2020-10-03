@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Color from 'color';
-import { ColorCard, ColorGroup } from '../components';
+import { ColorCard, ColorGroup, PageHeader } from '../components';
 import { MaterialChip, MaterialTooltip } from '../components/material';
 import { formatLuminance } from '../utils/format';
 import { withBaseColor } from '../utils/hoc';
@@ -49,7 +49,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
   return (
     <article className="page contrast-ratio">
       <ColorGroup layout="column">
-        <div className="contrast-ratio__header">
+        <PageHeader layout="space-between">
           <span className="body-12pt text-align-left margin-left-sm">
             {formatLuminance(_baseColor)}
           </span>
@@ -91,7 +91,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
           <span className="body-12pt text-align-right margin-right-sm">
             {formatLuminance(_secondaryColor)}
           </span>
-        </div>
+        </PageHeader>
         <ColorGroup layout="row">
           <ColorCard
             color={baseColor}

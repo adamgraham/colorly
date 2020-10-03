@@ -1,0 +1,25 @@
+.page-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  width: 100%;
+  min-height: 48px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 16px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-header--layout-center {
+  justify-content: center;
+}
+
+.page-header--layout-space-between {
+  justify-content: space-between;
+}
+
+.page-header--layout-space-between > span {
+  width: 25%;
+}

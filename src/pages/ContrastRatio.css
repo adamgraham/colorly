@@ -7,24 +7,6 @@
   width: 80%;
 }
 
-.page.contrast-ratio .contrast-ratio__header {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 5;
-  width: 100%;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-bottom: 16px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.page.contrast-ratio .contrast-ratio__header > span {
-  width: 25%;
-}
-
 .page.contrast-ratio .contrast-ratio__contrast {
   display: inline-flex;
   flex-direction: row;
