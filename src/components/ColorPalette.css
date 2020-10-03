@@ -1,0 +1,11 @@
+.color-palette {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+}
+
+.color-palette--reverse {
+  flex-direction: row-reverse;
+}

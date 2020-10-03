@@ -1,0 +1,118 @@
+.color-card {
+  position: relative;
+  padding: 16px 16px;
+  background-color: black;
+  transition: color 0.3s, background-color 0.3s;
+  color: black;
+}
+
+.color-card--light {
+  color: var(--text-color-dark);
+}
+
+.color-card--dark {
+  color: var(--text-color-light);
+}
+
+.color-card--small {
+  width: 80px;
+}
+
+.color-card--medium {
+  width: 160px;
+}
+
+.color-card--large {
+  width: 240px;
+}
+
+.color-card--flex {
+  flex: 1 1 0;
+}
+
+.color-card--selectable {
+  cursor: pointer;
+  outline: none;
+}
+
+.color-card--top-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.color-card--top-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: right;
+}
+
+.color-card--bottom-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: left;
+}
+
+.color-card--bottom-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.color-card__properties {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  white-space: nowrap;
+  outline: none;
+}
+
+.color-card--top-right .color-card__properties,
+.color-card--bottom-right .color-card__properties {
+  align-items: flex-end;
+}
+
+.color-card--bottom-left .color-card__properties,
+.color-card--bottom-right .color-card__properties {
+  flex-direction: column-reverse;
+}
+
+.color-card__secondary-properties {
+  transition: visibility 0.3s, opacity 0.3s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.color-card:hover .color-card__secondary-properties {
+  visibility: visible;
+  opacity: 1;
+}
+
+.color-card__hex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.color-card__copy {
+  font-size: 10pt !important;
+  margin-left: 4px;
+  margin-top: -1px;
+  transition: visibility 0.3s, opacity 0.3s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.color-card__properties:hover .color-card__copy {
+  visibility: visible;
+  opacity: 1;
+}

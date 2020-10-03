@@ -1,0 +1,26 @@
+.color-group {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex: 1 1 100%;
+}
+
+.color-group:only-of-type {
+  min-height: 100%;
+}
+
+.color-group--column {
+  flex-direction: column;
+}
+
+.color-group--column-reverse {
+  flex-direction: column-reverse;
+}
+
+.color-group--row {
+  flex-direction: row;
+}
+
+.color-group--row-reverse {
+  flex-direction: row-reverse;
+}

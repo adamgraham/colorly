@@ -1,0 +1,44 @@
+:root {
+  --white: white;
+  --black: black;
+  --transparent: transparent;
+  --brand-color-primary: #0086e5;
+  --brand-color-secondary: #111;
+  --text-color-default: #111;
+  --text-color-link: #0086e5;
+  --text-color-light: #fff;
+  --text-color-light-gray: #808080;
+  --text-color-dark: #000;
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.bg-black {
+  background-color: var(--black);
+}
+
+.bg-transparent {
+  background-color: var(--transparent);
+}
+
+.text-color-default {
+  color: var(--text-color-default);
+}
+
+.text-color-link {
+  color: var(--text-color-link);
+}
+
+.text-color-light {
+  color: var(--text-color-light);
+}
+
+.text-color-light-gray {
+  color: var(--text-color-light-gray);
+}
+
+.text-color-dark {
+  color: var(--text-color-dark);
+}

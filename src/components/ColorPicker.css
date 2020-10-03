@@ -1,0 +1,36 @@
+.color-picker {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.color-picker input[type="color"] {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.color-picker > label {
+  width: 100px;
+  cursor: pointer;
+}
+
+.color-picker--left-aligned {
+  flex-direction: row;
+  text-align: left;
+}
+
+.color-picker--right-aligned {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.color-picker .shuffle-button {
+  padding: 8px;
+}
+
+.color-picker .shuffle-button .material-icons {
+  font-size: 15pt;
+}

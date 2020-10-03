@@ -1,0 +1,22 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.App main {
+  width: 100%;
+  height: calc(100% - 64px);
+}
+
+.App article {
+  width: 100%;
+  height: 100%;
+}
+
+.App .page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
