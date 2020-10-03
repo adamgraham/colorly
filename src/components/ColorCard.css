@@ -73,6 +73,7 @@
   align-items: flex-start;
   white-space: nowrap;
   outline: none;
+  cursor: copy;
 }
 
 .color-card--top-right .color-card__properties,
