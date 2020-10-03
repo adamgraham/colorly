@@ -30,11 +30,11 @@ const AppHeader = ({
     }
   });
 
-  const handleOpenPageMenu = (event) => {
+  const openPageMenu = (event) => {
     setPageMenuAnchor(event.currentTarget);
   };
 
-  const handleClosePageMenu = () => {
+  const closePageMenu = () => {
     setPageMenuAnchor(null);
   };
 
@@ -58,7 +58,7 @@ const AppHeader = ({
         <MaterialButton
           aria-controls="simple-menu"
           aria-haspopup="true"
-          onClick={handleOpenPageMenu}
+          onClick={openPageMenu}
           startIcon={<MaterialIcon>menu</MaterialIcon>}
         >
           <b className="app-header__title">
@@ -67,17 +67,17 @@ const AppHeader = ({
         </MaterialButton>
         <MaterialMenu
           id="page-select"
-          className="margin-top-xxxl margin-left-xl"
+          className="margin-top-xxxl"
           anchorEl={pageMenuAnchor}
           keepMounted
           open={Boolean(pageMenuAnchor)}
-          onClose={handleClosePageMenu}
+          onClose={closePageMenu}
         >
           {Object.values(routes).map((route) => (
             <MaterialMenuItem
               key={route.path}
               onClick={() => {
-                handleClosePageMenu();
+                closePageMenu();
                 history.push(route.path);
               }}
             >

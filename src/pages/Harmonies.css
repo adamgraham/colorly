@@ -1,0 +1,7 @@
+.page.harmonies .page-header {
+  height: 52px;
+}
+
+.page.harmonies .page-header + .color-group {
+  min-height: calc(100% - 52px);
+}
