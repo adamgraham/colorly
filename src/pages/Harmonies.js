@@ -16,90 +16,90 @@ const Harmonies = ({ baseColor, setBaseColor }) => {
               baseColor={color.hue(color.hue() + 180)}
               length={6}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
-            {/* <ColorCard color={color.hue(color.hue() + 180)} /> */}
           </ColorGroup>
           <ColorGroup layout="row">
             <ColorPalette
               baseColor={color.hue(color.hue() + 150)}
               length={3}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
             <ColorPalette
               baseColor={color.hue(color.hue() + 210)}
               length={3}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
-            {/* <ColorCard color={color.hue(color.hue() + 150)} />
-            <ColorCard color={color.hue(color.hue() + 210)} /> */}
           </ColorGroup>
           <ColorGroup layout="row">
             <ColorPalette
               baseColor={color.hue(color.hue() - 30)}
               length={3}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
             <ColorPalette
               baseColor={color.hue(color.hue() + 30)}
               length={3}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
-            {/* <ColorCard color={color.hue(color.hue() - 30)} />
-            <ColorCard color={color.hue(color.hue() + 30)} /> */}
           </ColorGroup>
           <ColorGroup layout="row">
             <ColorPalette
               baseColor={color.hue(color.hue() - 120)}
               length={3}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
             <ColorPalette
               baseColor={color.hue(color.hue() + 120)}
               length={3}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
-            {/* <ColorCard color={color.hue(color.hue() - 120)} />
-            <ColorCard color={color.hue(color.hue() + 120)} /> */}
           </ColorGroup>
           <ColorGroup layout="row">
             <ColorPalette
               baseColor={color.hue(color.hue() + 180)}
               length={2}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
             <ColorPalette
               baseColor={color.hue(color.hue() + 60)}
               length={2}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
             <ColorPalette
               baseColor={color.hue(color.hue() + 240)}
               length={2}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
-            {/* <ColorCard color={color.hue(color.hue() + 60)} />
-            <ColorCard color={color.hue(color.hue() + 180)} />
-            <ColorCard color={color.hue(color.hue() + 240)} /> */}
           </ColorGroup>
           <ColorGroup layout="row">
             <ColorPalette
               baseColor={color.hue(color.hue() + 180)}
               length={2}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
             <ColorPalette
               baseColor={color.hue(color.hue() + 90)}
               length={2}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
             <ColorPalette
               baseColor={color.hue(color.hue() + 270)}
               length={2}
               type="tintsAndShades"
+              onSelectColor={setBaseColor}
             />
-            {/* <ColorCard color={color.hue(color.hue() + 90)} />
-            <ColorCard color={color.hue(color.hue() + 180)} />
-            <ColorCard color={color.hue(color.hue() + 270)} /> */}
           </ColorGroup>
         </ColorGroup>
       </ColorGroup>
