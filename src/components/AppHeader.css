@@ -11,10 +11,11 @@
   z-index: 10;
   transform: translateZ(0);
   background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.app-header--drop-shadow {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.app-header--no-shadow {
+  box-shadow: none;
 }
 
 .app-header__title {

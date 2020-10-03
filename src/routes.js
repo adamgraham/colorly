@@ -29,11 +29,14 @@ export const routes = {
     path: '/harmonies',
     name: 'Harmonies',
     component: Harmonies,
+    useSubheader: true,
   },
   contrastRatio: {
     path: '/contrast',
     name: 'Contrast Ratio',
     component: ContrastRatio,
+    useSubheader: true,
+    useSecondaryColor: true,
   },
 };
 

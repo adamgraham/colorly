@@ -41,7 +41,9 @@ const AppHeader = ({
   return (
     <header
       className={classNames('app-header', {
-        'app-header--drop-shadow': matchedRoute.path !== '/contrast',
+        'app-header--no-shadow': Boolean(
+          matchedRoute && matchedRoute.useSubheader
+        ),
       })}
     >
       <ColorPicker
@@ -84,7 +86,7 @@ const AppHeader = ({
           ))}
         </MaterialMenu>
       </div>
-      {matchedRoute && matchedRoute.path === '/contrast' ? (
+      {matchedRoute && matchedRoute.useSecondaryColor ? (
         <ColorPicker
           id="color-picker-secondary"
           alignment="right"
