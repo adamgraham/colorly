@@ -13,9 +13,7 @@ const App = () => (
   <div className="App">
     <AppHeader />
     <main>
-      <article>
-        <Routes />
-      </article>
+      <Routes />
     </main>
   </div>
 );

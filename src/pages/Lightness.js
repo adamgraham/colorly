@@ -4,7 +4,7 @@ import { ColorCard, ColorGroup, ColorPalette } from '../components';
 import { withBaseColor } from '../utils/hoc';
 
 const Lightness = ({ baseColor, setBaseColor }) => (
-  <div className="page lightness">
+  <article className="page lightness">
     <ColorGroup layout="row">
       <ColorCard color={baseColor} size="large" />
       <ColorGroup layout="column">
@@ -20,7 +20,7 @@ const Lightness = ({ baseColor, setBaseColor }) => (
         />
       </ColorGroup>
     </ColorGroup>
-  </div>
+  </article>
 );
 
 Lightness.propTypes = {

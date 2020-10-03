@@ -47,7 +47,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
   const contrast = _baseColor.contrast(_secondaryColor);
   const level = _baseColor.level(_secondaryColor);
   return (
-    <div className="page contrast-ratio">
+    <article className="page contrast-ratio">
       <ColorGroup layout="column">
         <div className="contrast-ratio__header">
           <span className="body-12pt text-align-left margin-left-sm">
@@ -117,7 +117,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
           </ColorCard>
         </ColorGroup>
       </ColorGroup>
-    </div>
+    </article>
   );
 };
 

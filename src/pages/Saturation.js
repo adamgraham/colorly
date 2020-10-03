@@ -4,7 +4,7 @@ import { ColorCard, ColorGroup, ColorPalette } from '../components';
 import { withBaseColor } from '../utils/hoc';
 
 const Saturation = ({ baseColor, setBaseColor }) => (
-  <div className="page saturation">
+  <article className="page saturation">
     <ColorGroup layout="row">
       <ColorCard color={baseColor} size="large" />
       <ColorGroup layout="column">
@@ -20,7 +20,7 @@ const Saturation = ({ baseColor, setBaseColor }) => (
         />
       </ColorGroup>
     </ColorGroup>
-  </div>
+  </article>
 );
 
 Saturation.propTypes = {

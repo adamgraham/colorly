@@ -7,7 +7,7 @@ import Color from 'color';
 const Harmonies = ({ baseColor, setBaseColor }) => {
   const color = new Color(baseColor);
   return (
-    <div className="page harmonies">
+    <article className="page harmonies">
       <ColorGroup layout="row">
         <ColorCard color={baseColor} size="large" />
         <ColorGroup layout="column">
@@ -103,7 +103,7 @@ const Harmonies = ({ baseColor, setBaseColor }) => {
           </ColorGroup>
         </ColorGroup>
       </ColorGroup>
-    </div>
+    </article>
   );
 };
 

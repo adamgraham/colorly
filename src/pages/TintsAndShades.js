@@ -4,7 +4,7 @@ import { ColorCard, ColorGroup, ColorPalette } from '../components';
 import { withBaseColor } from '../utils/hoc';
 
 const TintsAndShades = ({ baseColor, setBaseColor }) => (
-  <div className="page tints-and-shades">
+  <article className="page tints-and-shades">
     <ColorGroup layout="row">
       <ColorCard
         color={baseColor}
@@ -29,7 +29,7 @@ const TintsAndShades = ({ baseColor, setBaseColor }) => (
         />
       </ColorGroup>
     </ColorGroup>
-  </div>
+  </article>
 );
 
 TintsAndShades.propTypes = {
