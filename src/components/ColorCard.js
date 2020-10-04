@@ -12,6 +12,7 @@ import { enterKeyHandler } from '../utils/eventHandlers';
 import {
   formatCMYK,
   formatHSL,
+  formatHSV,
   formatLuminance,
   formatRGB,
 } from '../utils/format';
@@ -37,6 +38,8 @@ const renderProperties = (properties, colorData) => (
           return <div key="cmyk">{formatCMYK(colorData.color)}</div>;
         case 'hsl':
           return <div key="hsl">{formatHSL(colorData.color)}</div>;
+        case 'hsv':
+          return <div key="hsv">{formatHSV(colorData.color)}</div>;
         case 'luminance':
           return <div key="luminance">{formatLuminance(colorData.color)}</div>;
         default:
@@ -51,7 +54,7 @@ const ColorCard = ({
   className,
   color,
   properties = ['hex'],
-  secondaryProperties = ['rgb', 'cmyk', 'hsl'],
+  secondaryProperties = ['rgb', 'cmyk', 'hsl', 'hsv'],
   hideProperties = false,
   copyable = true,
   position = 'top-left',
@@ -153,7 +156,7 @@ const ColorCard = ({
                 </div>
               </MaterialTooltip>
               <MaterialSnackbar
-                message={`Copied '${colorData.hex.toLowerCase()}' to the clipboard`}
+                message={`Copied ${colorData.hex.toLowerCase()} to the clipboard`}
                 open={copyToastOpen}
                 autoHideDuration={3000}
                 onClose={() => setCopyToastOpen(false)}
