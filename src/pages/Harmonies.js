@@ -38,6 +38,10 @@ const routes = {
     path: '/harmonies/square',
     name: 'Square',
   },
+  monochromatic: {
+    path: '/harmonies/monochromatic',
+    name: 'Monochromatic',
+  },
 };
 
 const Harmonies = ({ baseColor, setBaseColor, history }) => {
@@ -235,6 +239,16 @@ const Harmonies = ({ baseColor, setBaseColor, history }) => {
             />
             <ColorPalette
               baseColor={color.hue(color.hue() + 270)}
+              length={9}
+              type="tintsAndShades"
+              onSelectColor={setBaseColor}
+            />
+          </ColorGroup>
+        </Route>
+        <Route path={routes.monochromatic.path}>
+          <ColorGroup layout="column">
+            <ColorPalette
+              baseColor={color}
               length={9}
               type="tintsAndShades"
               onSelectColor={setBaseColor}
