@@ -32,7 +32,7 @@ const ColorPalette = ({
 
   useEffect(() => {
     const base = new Color(baseColor);
-    const colors = includeBaseColor ? [base] : [];
+    const colors = includeBaseColor ? [base.hex()] : [];
     const lightness = base.lightness();
     const saturation = base.saturationl();
 

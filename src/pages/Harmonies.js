@@ -14,33 +14,40 @@ import { withBaseColor } from '../utils/hoc';
 import './Harmonies.css';
 
 const routes = {
-  complement: {
-    path: '/harmonies/complement',
-    name: 'Complement',
-  },
-  splitComplement: {
-    path: '/harmonies/split-complement',
-    name: 'Split Complement',
-  },
   analogous: {
     path: '/harmonies/analogous',
     name: 'Analogous',
-  },
-  triadic: {
-    path: '/harmonies/triadic',
-    name: 'Triadic',
-  },
-  rectangle: {
-    path: '/harmonies/rectangle',
-    name: 'Rectangle',
-  },
-  square: {
-    path: '/harmonies/square',
-    name: 'Square',
+    hues: [-30, 0, 30],
   },
   monochromatic: {
     path: '/harmonies/monochromatic',
     name: 'Monochromatic',
+    hues: [0],
+  },
+  complement: {
+    path: '/harmonies/complement',
+    name: 'Complement',
+    hues: [0, 180],
+  },
+  splitComplement: {
+    path: '/harmonies/split-complement',
+    name: 'Split Complement',
+    hues: [0, 150, 210],
+  },
+  doubleComplement: {
+    path: '/harmonies/double-complement',
+    name: 'Double Complement',
+    hues: [-30, 150, 30, 210],
+  },
+  triadic: {
+    path: '/harmonies/triadic',
+    name: 'Triadic (120°)',
+    hues: [0, 120, 240],
+  },
+  tetradic: {
+    path: '/harmonies/tetradic',
+    name: 'Tetradic (90°)',
+    hues: [0, 90, 180, 270],
   },
 };
 
@@ -55,7 +62,7 @@ const Harmonies = ({ baseColor, setBaseColor, history }) => {
 
   useEffect(() => {
     if (!matchedRoute) {
-      history.push(selectedHarmony?.path ?? routes.complement.path);
+      history.push(selectedHarmony?.path ?? routes.analogous.path);
     }
   }, [history, selectedHarmony, matchedRoute]);
 
@@ -107,164 +114,21 @@ const Harmonies = ({ baseColor, setBaseColor, history }) => {
         </MaterialMenu>
       </PageHeader>
       <Switch>
-        <Route path={routes.complement.path}>
-          <ColorGroup layout="column">
-            <ColorPalette
-              baseColor={color}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 180)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-          </ColorGroup>
-        </Route>
-        <Route path={routes.splitComplement.path}>
-          <ColorGroup layout="column">
-            <ColorPalette
-              baseColor={color}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 150)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 210)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-          </ColorGroup>
-        </Route>
-        <Route path={routes.analogous.path}>
-          <ColorGroup layout="column">
-            <ColorPalette
-              baseColor={color}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() - 30)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 30)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-          </ColorGroup>
-        </Route>
-        <Route path={routes.triadic.path}>
-          <ColorGroup layout="column">
-            <ColorPalette
-              baseColor={color}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() - 120)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 120)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-          </ColorGroup>
-        </Route>
-        <Route path={routes.rectangle.path}>
-          <ColorGroup layout="column">
-            <ColorPalette
-              baseColor={color}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 180)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 60)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 240)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-          </ColorGroup>
-        </Route>
-        <Route path={routes.square.path}>
-          <ColorGroup layout="column">
-            <ColorPalette
-              baseColor={color}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 180)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 90)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-            <ColorPalette
-              baseColor={color.hue(color.hue() + 270)}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-          </ColorGroup>
-        </Route>
-        <Route path={routes.monochromatic.path}>
-          <ColorGroup layout="column">
-            <ColorPalette
-              baseColor={color}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-          </ColorGroup>
-        </Route>
-        <Route>
-          <ColorGroup layout="column">
-            <ColorPalette
-              baseColor={color}
-              length={9}
-              type="tintsAndShades"
-              onSelectColor={setBaseColor}
-            />
-          </ColorGroup>
-        </Route>
+        {Object.values(routes).map((route) => (
+          <Route key={route.path} path={route.path}>
+            <ColorGroup layout="column">
+              {route.hues.map((hue) => (
+                <ColorPalette
+                  key={hue}
+                  baseColor={hue === 0 ? color : color.hue(color.hue() + hue)}
+                  length={9}
+                  type="tintsAndShades"
+                  onSelectColor={setBaseColor}
+                />
+              ))}
+            </ColorGroup>
+          </Route>
+        ))}
       </Switch>
     </article>
   );

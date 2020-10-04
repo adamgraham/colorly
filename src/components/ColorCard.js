@@ -49,7 +49,6 @@ const renderProperties = (properties, colorData) => (
 const ColorCard = ({
   children,
   className,
-  baseColor,
   color,
   properties = ['hex'],
   secondaryProperties = ['rgb', 'cmyk', 'hsl'],
