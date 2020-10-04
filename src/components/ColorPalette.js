@@ -26,6 +26,7 @@ const ColorPalette = ({
   increment = 0.1,
   includeBaseColor = false,
   reversed = false,
+  layout = 'row',
   onSelectColor = () => {},
 }) => {
   const [palette, setPalette] = useState([]);
@@ -87,7 +88,14 @@ const ColorPalette = ({
   }, [baseColor, includeBaseColor, increment, length, reversed, type]);
 
   return (
-    <div className={classNames('color-palette', type, className)}>
+    <div
+      className={classNames(
+        'color-palette',
+        { [`color-palette--${layout}`]: layout },
+        type,
+        className
+      )}
+    >
       {palette.map((color, index) => (
         <ColorCard
           key={index}
@@ -109,6 +117,7 @@ ColorPalette.propTypes = {
   increment: PropTypes.number,
   includeBaseColor: PropTypes.bool,
   reversed: PropTypes.bool,
+  layout: PropTypes.oneOf(['row', 'row-reverse', 'column', 'column-reverse']),
   onSelectColor: PropTypes.func,
 };
 
