@@ -7,6 +7,7 @@ import { white, black, gray } from '../utils/colors';
 import './ColorPalette.css';
 
 const types = {
+  hues: 'hues',
   tintsAndShades: 'tintsAndShades',
   tints: 'tints',
   shades: 'shades',
@@ -39,8 +40,10 @@ const ColorPalette = ({
       const weight = (i + 1) * increment;
       var color = base;
 
-      /* eslint-disable no-case-declarations */
       switch (type) {
+        case types.hues:
+          color = color.hue(color.hue() + 360 * weight);
+          break;
         case types.tintsAndShades:
           if (i < length / 2) {
             color = color.mix(white, 0.5 - weight);
@@ -72,7 +75,6 @@ const ColorPalette = ({
         default:
           break;
       }
-      /* eslint-enable no-case-declarations */
 
       colors.push(color.hex());
     }

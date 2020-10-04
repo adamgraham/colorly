@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import {
   ContrastRatio,
   Harmonies,
+  Hues,
   Lightness,
   Saturation,
   TintsAndShades,
@@ -24,6 +25,11 @@ export const routes = {
     path: '/saturation',
     name: 'Saturation',
     component: Saturation,
+  },
+  hues: {
+    path: '/hues',
+    name: 'Hues',
+    component: Hues,
   },
   harmonies: {
     path: '/harmonies',
