@@ -43,7 +43,7 @@ const ColorPalette = ({
 
       switch (type) {
         case types.hues:
-          color = color.hue(color.hue() + 360 * weight);
+          color = color.rotate(weight * 360);
           break;
         case types.tintsAndShades:
           if (i < length / 2) {

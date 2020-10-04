@@ -19,14 +19,14 @@ const Hues = ({ baseColor, setBaseColor }) => {
             type="hues"
           />
           <ColorPalette
-            baseColor={color.hue(color.hue() + 120)}
+            baseColor={color.rotate(120)}
             onSelectColor={setBaseColor}
             increment={15 / 360}
             length={8}
             type="hues"
           />
           <ColorPalette
-            baseColor={color.hue(color.hue() + 240)}
+            baseColor={color.rotate(240)}
             onSelectColor={setBaseColor}
             increment={15 / 360}
             length={8}

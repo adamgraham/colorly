@@ -120,7 +120,7 @@ const Harmonies = ({ baseColor, setBaseColor, history }) => {
               {route.hues.map((hue) => (
                 <ColorPalette
                   key={hue}
-                  baseColor={hue === 0 ? color : color.hue(color.hue() + hue)}
+                  baseColor={hue === 0 ? color : color.rotate(hue)}
                   length={9}
                   type="tintsAndShades"
                   onSelectColor={setBaseColor}
