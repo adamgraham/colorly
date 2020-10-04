@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Color from 'color';
@@ -40,6 +41,8 @@ const routes = {
 };
 
 const Harmonies = ({ baseColor, setBaseColor, history }) => {
+  const dispatch = useDispatch();
+  const selectedHarmony = useSelector((state) => state.color.selectedHarmony);
   const color = new Color(baseColor);
   const [harmonyMenuAnchor, setHarmonyMenuAnchor] = useState(null);
   const matchedRoute = Object.values(routes).find((route) => {
@@ -48,9 +51,9 @@ const Harmonies = ({ baseColor, setBaseColor, history }) => {
 
   useEffect(() => {
     if (!matchedRoute) {
-      history.push(routes.complement.path);
+      history.push(selectedHarmony?.path ?? routes.complement.path);
     }
-  }, [matchedRoute, history]);
+  }, [history, selectedHarmony, matchedRoute]);
 
   const openHarmonyMenu = (event) => {
     setHarmonyMenuAnchor(event.currentTarget);
@@ -90,6 +93,7 @@ const Harmonies = ({ baseColor, setBaseColor, history }) => {
               key={route.path}
               onClick={() => {
                 closeHarmonyMenu();
+                dispatch({ type: 'SET_SELECTED_HARMONY', harmony: route });
                 history.push(route.path);
               }}
             >
