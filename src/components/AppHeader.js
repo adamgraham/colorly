@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Color from 'color';
 import {
   MaterialButton,
   MaterialIcon,
@@ -10,7 +11,7 @@ import {
 } from './material';
 import ColorPicker from './ColorPicker';
 import { routes } from '../routes';
-import { randomColorHex } from '../utils/colors';
+import { isValidColor, randomColorHex } from '../utils/colors';
 import { withBaseColor } from '../utils/hoc';
 import './AppHeader.css';
 
@@ -36,6 +37,15 @@ const AppHeader = ({
     }
   }, [matchedRoute, history]);
 
+  useEffect(() => {
+    document.addEventListener('paste', (event) => {
+      let paste = (event.clipboardData || window.clipboardData).getData('text');
+      if (isValidColor(paste)) {
+        setBaseColor(paste);
+      }
+    });
+  }, [setBaseColor]);
+
   const openPageMenu = (event) => {
     setPageMenuAnchor(event.currentTarget);
   };
@@ -58,7 +68,7 @@ const AppHeader = ({
         onColorChange={setBaseColor}
         onShuffleClick={() => setBaseColor(randomColorHex())}
         showLabel
-        value={baseColor}
+        value={new Color(baseColor).hex()}
       />
       <div className="flex justify-content-center align-items-center">
         <MaterialButton
@@ -99,7 +109,7 @@ const AppHeader = ({
           onColorChange={setSecondaryBaseColor}
           onShuffleClick={() => setSecondaryBaseColor(randomColorHex())}
           showLabel
-          value={secondaryBaseColor}
+          value={new Color(secondaryBaseColor).hex()}
         />
       ) : (
         <div className="body-9pt text-align-right">
