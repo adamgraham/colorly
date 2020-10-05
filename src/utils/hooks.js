@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
+import { getBaseColor, getSecondaryBaseColor } from '../selectors';
 
 export const useBaseColor = () => {
-  return useSelector((state) => state.color.baseColor);
+  return useSelector(getBaseColor);
 };
 
 export const useSecondaryBaseColor = () => {
-  return useSelector((state) => state.color.secondaryBaseColor);
+  return useSelector(getSecondaryBaseColor);
 };

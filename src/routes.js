@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import {
+  ColorBlindness,
   ContrastRatio,
   Harmonies,
   Hues,
@@ -35,6 +36,12 @@ export const routes = {
     path: '/harmonies',
     name: 'Harmonies',
     component: Harmonies,
+    useSubheader: true,
+  },
+  colorBlindness: {
+    path: '/color-blindness',
+    name: 'Color Blindness',
+    component: ColorBlindness,
     useSubheader: true,
   },
   contrastRatio: {

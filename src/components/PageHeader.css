@@ -4,12 +4,16 @@
   align-items: center;
   z-index: 5;
   width: 100%;
-  min-height: 48px;
+  height: 56px;
   padding-left: 24px;
   padding-right: 24px;
   padding-bottom: 16px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-header + .color-group:only-of-type {
+  min-height: calc(100% - 56px);
 }
 
 .page-header--layout-center {

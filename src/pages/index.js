@@ -1,3 +1,4 @@
+export { default as ColorBlindness } from './ColorBlindness';
 export { default as ContrastRatio } from './ContrastRatio';
 export { default as Harmonies } from './Harmonies';
 export { default as Hues } from './Hues';

@@ -5,6 +5,7 @@ const defaultState = {
   baseColor: randomColorHex(),
   secondaryBaseColor: '#000000',
   selectedHarmony: null,
+  selectedColorBlindness: null,
 };
 
 const color = (state = defaultState, action) => {
@@ -15,6 +16,8 @@ const color = (state = defaultState, action) => {
       return { ...state, secondaryBaseColor: action.color };
     case 'SET_SELECTED_HARMONY':
       return { ...state, selectedHarmony: action.harmony };
+    case 'SET_SELECTED_COLOR_BLINDNESS':
+      return { ...state, selectedColorBlindness: action.colorBlindness };
     default:
       return state;
   }
