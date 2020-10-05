@@ -8,7 +8,7 @@ import {
   MaterialTooltip,
 } from '../components/material';
 import { white, black } from '../utils/colors';
-import { enterKeyHandler } from '../utils/eventHandlers';
+import { copyToClipboard, enterKeyHandler } from '../utils/eventHandlers';
 import {
   formatCMYK,
   formatHSL,
@@ -26,7 +26,13 @@ const renderProperties = (properties, colorData) => (
         case 'hex':
           return (
             <div key="hex" className="color-card__hex">
-              <span className="hex-string">{colorData.hex}</span>
+              <MaterialTooltip
+                title="Copy to clipboard"
+                placement="right"
+                arrow
+              >
+                <span className="hex-string">{colorData.hex}</span>
+              </MaterialTooltip>
               <MaterialIcon className="color-card__copy">
                 content_copy
               </MaterialIcon>
@@ -70,19 +76,6 @@ const ColorCard = ({
     dark: false,
   });
 
-  const copyToClipboard = (str) => {
-    const element = document.createElement('textarea');
-    element.value = str;
-    element.setAttribute('readonly', '');
-    element.style.position = 'absolute';
-    element.style.left = '-9999px';
-    document.body.appendChild(element);
-    element.select();
-    document.execCommand('copy');
-    document.body.removeChild(element);
-    setCopyToastOpen(true);
-  };
-
   useEffect(() => {
     const _color = new Color(color);
     const whiteContrast = _color.contrast(white);
@@ -96,9 +89,16 @@ const ColorCard = ({
     });
   }, [color]);
 
+  const selectColor = (event) => {
+    onSelect(colorData.hex);
+
+    if (event.target && event.target.blur) {
+      event.target.blur();
+    }
+  };
+
   return (
     <div
-      style={{ backgroundColor: colorData.hex }}
       className={classNames(
         'color-card',
         {
@@ -114,47 +114,56 @@ const ColorCard = ({
         },
         className
       )}
-      onClick={onSelect && (() => onSelect(colorData.hex))}
-      onKeyDown={onSelect && enterKeyHandler(() => onSelect(colorData.hex))}
+      onClick={onSelect && selectColor}
+      onKeyDown={onSelect && enterKeyHandler(selectColor)}
       role={onSelect && 'button'}
-      tabIndex={onSelect && '-1'}
+      tabIndex={onSelect && '0'}
+      style={{ backgroundColor: colorData.hex }}
     >
       {!hideProperties && (
         <>
           {copyable ? (
             <>
-              <MaterialTooltip title="Copy to clipboard">
+              <div
+                className="color-card__properties"
+                onClick={(event) => {
+                  event.stopPropagation();
+                }}
+                onKeyDown={enterKeyHandler(() => {})}
+                role="button"
+                tabIndex="-1"
+              >
                 <div
-                  className="color-card__properties"
+                  className={classNames('color-card__primary-properties', {
+                    'body-9pt': textSize === 'small',
+                    'body-12pt': textSize === 'medium',
+                    'body-15pt': textSize === 'large',
+                  })}
                   onClick={(event) => {
                     event.stopPropagation();
-                    copyToClipboard(colorData.hex.toLowerCase());
+                    copyToClipboard(colorData.hex.toLowerCase(), () =>
+                      setCopyToastOpen(true)
+                    );
                   }}
-                  onKeyDown={enterKeyHandler(() =>
-                    copyToClipboard(colorData.hex.toLowerCase())
-                  )}
+                  onKeyDown={enterKeyHandler(() => {
+                    copyToClipboard(colorData.hex.toLowerCase(), () =>
+                      setCopyToastOpen(true)
+                    );
+                  })}
                   role="button"
                   tabIndex="-1"
                 >
-                  <div
-                    className={classNames('color-card__primary-properties', {
-                      'body-9pt': textSize === 'small',
-                      'body-12pt': textSize === 'medium',
-                      'body-15pt': textSize === 'large',
-                    })}
-                  >
-                    {renderProperties(properties, colorData)}
-                  </div>
-                  <div
-                    className={classNames('color-card__secondary-properties', {
-                      'body-9pt': textSize === 'small' || textSize === 'medium',
-                      'body-12pt': textSize === 'large',
-                    })}
-                  >
-                    {renderProperties(secondaryProperties, colorData)}
-                  </div>
+                  {renderProperties(properties, colorData)}
                 </div>
-              </MaterialTooltip>
+                <div
+                  className={classNames('color-card__secondary-properties', {
+                    'body-9pt': textSize === 'small' || textSize === 'medium',
+                    'body-12pt': textSize === 'large',
+                  })}
+                >
+                  {renderProperties(secondaryProperties, colorData)}
+                </div>
+              </div>
               <MaterialSnackbar
                 message={`Copied ${colorData.hex.toLowerCase()} to the clipboard`}
                 open={copyToastOpen}
