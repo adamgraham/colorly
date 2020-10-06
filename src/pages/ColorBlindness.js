@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Color from 'color';
 import blinder from 'color-blind';
+import { setSelectedColorBlindness } from '../actions';
 import { ColorGroup, ColorPalette, PageHeader } from '../components';
 import {
   MaterialButton,
@@ -110,10 +111,7 @@ const ColorBlindness = ({ baseColor, setBaseColor, history }) => {
               key={route.path}
               onClick={() => {
                 closeMenu();
-                dispatch({
-                  type: 'SET_SELECTED_COLOR_BLINDNESS',
-                  colorBlindness: route,
-                });
+                dispatch(setSelectedColorBlindness(route));
                 history.push(route.path);
               }}
             >

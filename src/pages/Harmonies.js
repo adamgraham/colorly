@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Color from 'color';
+import { setSelectedHarmony } from '../actions';
 import { ColorGroup, ColorPalette, PageHeader } from '../components';
 import {
   MaterialButton,
@@ -104,7 +105,7 @@ const Harmonies = ({ baseColor, setBaseColor, history }) => {
               key={route.path}
               onClick={() => {
                 closeMenu();
-                dispatch({ type: 'SET_SELECTED_HARMONY', harmony: route });
+                dispatch(setSelectedHarmony(route));
                 history.push(route.path);
               }}
             >

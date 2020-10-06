@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, useLocation } from 'react-router-dom';
+import { setBaseColor } from './actions';
 import {
   ColorBlindness,
   ContrastRatio,
@@ -72,7 +73,7 @@ const Routes = () => {
     }
 
     if (color) {
-      dispatch({ type: 'SET_BASE_COLOR', color });
+      dispatch(setBaseColor(color));
     }
   }, [dispatch, location]);
 

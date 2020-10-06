@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useBaseColor, useSecondaryBaseColor } from './hooks';
+import { setBaseColor, setSecondaryBaseColor } from '../actions';
 
 export const withBaseColor = (Component) => (props) => {
   const dispatch = useDispatch();
@@ -12,10 +13,10 @@ export const withBaseColor = (Component) => (props) => {
       baseColor={baseColor}
       secondaryBaseColor={secondaryBaseColor}
       setBaseColor={(color) => {
-        dispatch({ type: 'SET_BASE_COLOR', color });
+        dispatch(setBaseColor(color));
       }}
       setSecondaryBaseColor={(color) => {
-        dispatch({ type: 'SET_SECONDARY_BASE_COLOR', color });
+        dispatch(setSecondaryBaseColor(color));
       }}
     />
   );
