@@ -6,12 +6,7 @@ import { withBaseColor } from '../utils/hoc';
 const TintsAndShades = ({ baseColor, setBaseColor }) => (
   <article className="page tints-and-shades">
     <ColorGroup layout="row">
-      <ColorCard
-        color={baseColor}
-        onSelectColor={setBaseColor}
-        size="large"
-        style={{ borderRight: '4px solid rgba(255, 255, 255, 0.125)' }}
-      />
+      <ColorCard color={baseColor} onSelectColor={setBaseColor} size="large" />
       <ColorGroup layout="column">
         <ColorPalette
           baseColor={baseColor}
