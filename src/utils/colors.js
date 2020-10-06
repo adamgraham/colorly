@@ -22,7 +22,7 @@ export const randomColor = () =>
     'rgb'
   );
 
-export const randomColorHex = () => randomColor().hex();
+export const randomColorHex = () => randomColor().hex().toLowerCase();
 
 export const isValidColor = (strColor) => {
   const s = new Option().style;

@@ -11,8 +11,12 @@ const ColorPicker = React.forwardRef(
       className,
       id = 'color-picker',
       alignment = 'left',
+      allowRedo = true,
+      allowUndo = true,
       onColorChange = () => {},
       onShuffleClick = () => {},
+      onUndoClick = () => {},
+      onRedoClick = () => {},
       showLabel = false,
       value,
     },
@@ -64,12 +68,59 @@ const ColorPicker = React.forwardRef(
           aria-label="Randomize"
           className="shuffle-button"
           color="inherit"
-          // component="span"
           fontSize="small"
           onClick={onShuffleClick}
         >
           <MaterialIcon>shuffle</MaterialIcon>
         </MaterialIconButton>
+        {alignment === 'left' && (
+          <>
+            <MaterialIconButton
+              aria-label="Undo"
+              className="undo-button"
+              color="inherit"
+              disabled={!allowUndo}
+              fontSize="small"
+              onClick={onUndoClick}
+            >
+              <MaterialIcon>undo</MaterialIcon>
+            </MaterialIconButton>
+            <MaterialIconButton
+              aria-label="Redo"
+              className="redo-button"
+              color="inherit"
+              disabled={!allowRedo}
+              fontSize="small"
+              onClick={onRedoClick}
+            >
+              <MaterialIcon>redo</MaterialIcon>
+            </MaterialIconButton>
+          </>
+        )}
+        {alignment === 'right' && (
+          <>
+            <MaterialIconButton
+              aria-label="Redo"
+              className="redo-button"
+              color="inherit"
+              disabled={!allowRedo}
+              fontSize="small"
+              onClick={onRedoClick}
+            >
+              <MaterialIcon>redo</MaterialIcon>
+            </MaterialIconButton>
+            <MaterialIconButton
+              aria-label="Undo"
+              className="undo-button"
+              color="inherit"
+              disabled={!allowUndo}
+              fontSize="small"
+              onClick={onUndoClick}
+            >
+              <MaterialIcon>undo</MaterialIcon>
+            </MaterialIconButton>
+          </>
+        )}
       </div>
     );
   }
@@ -80,8 +131,12 @@ ColorPicker.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   alignment: PropTypes.oneOf(['left', 'right']),
+  allowRedo: PropTypes.bool,
+  allowUndo: PropTypes.bool,
   onColorChange: PropTypes.func,
   onShuffleClick: PropTypes.func,
+  onUndoClick: PropTypes.func,
+  onRedoClick: PropTypes.func,
   showLabel: PropTypes.bool,
   value: PropTypes.string,
 };

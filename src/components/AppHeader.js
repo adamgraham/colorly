@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -10,8 +11,22 @@ import {
   MaterialMenuItem,
 } from './material';
 import ColorPicker from './ColorPicker';
+import {
+  redoBaseColor,
+  redoSecondaryBaseColor,
+  shuffleBaseColor,
+  shuffleSecondaryBaseColor,
+  undoBaseColor,
+  undoSecondaryBaseColor,
+} from '../actions';
 import { routes } from '../routes';
-import { isValidColor, randomColorHex } from '../utils/colors';
+import {
+  canRedoBaseColor,
+  canRedoSecondaryBaseColor,
+  canUndoBaseColor,
+  canUndoSecondaryBaseColor,
+} from '../selectors';
+import { isValidColor } from '../utils/colors';
 import { withBaseColor } from '../utils/hoc';
 import './AppHeader.css';
 
@@ -22,6 +37,12 @@ const AppHeader = ({
   setSecondaryBaseColor,
   history,
 }) => {
+  const dispatch = useDispatch();
+  const _canRedoBaseColor = useSelector(canRedoBaseColor);
+  const _canRedoSecondaryBaseColor = useSelector(canRedoSecondaryBaseColor);
+  const _canUndoBaseColor = useSelector(canUndoBaseColor);
+  const _canUndoSecondaryBaseColor = useSelector(canUndoSecondaryBaseColor);
+
   const [pageMenuAnchor, setPageMenuAnchor] = useState(null);
   const matchedRoute = Object.values(routes).find((route) => {
     if (route.exact) {
@@ -65,8 +86,12 @@ const AppHeader = ({
       <ColorPicker
         id="color-picker-primary"
         alignment="left"
+        allowRedo={_canRedoBaseColor}
+        allowUndo={_canUndoBaseColor}
         onColorChange={setBaseColor}
-        onShuffleClick={() => setBaseColor(randomColorHex())}
+        onShuffleClick={() => dispatch(shuffleBaseColor())}
+        onUndoClick={() => dispatch(undoBaseColor())}
+        onRedoClick={() => dispatch(redoBaseColor())}
         showLabel
         value={new Color(baseColor).hex()}
       />
@@ -106,8 +131,12 @@ const AppHeader = ({
         <ColorPicker
           id="color-picker-secondary"
           alignment="right"
+          allowRedo={_canRedoSecondaryBaseColor}
+          allowUndo={_canUndoSecondaryBaseColor}
           onColorChange={setSecondaryBaseColor}
-          onShuffleClick={() => setSecondaryBaseColor(randomColorHex())}
+          onShuffleClick={() => dispatch(shuffleSecondaryBaseColor())}
+          onUndoClick={() => dispatch(undoSecondaryBaseColor())}
+          onRedoClick={() => dispatch(redoSecondaryBaseColor())}
           showLabel
           value={new Color(secondaryBaseColor).hex()}
         />
