@@ -66,7 +66,7 @@ const ColorCard = ({
   position = 'top-left',
   size = 'flex',
   textSize = 'medium',
-  onSelect,
+  onSelectColor,
 }) => {
   const [copyToastOpen, setCopyToastOpen] = useState(false);
   const [colorData, setColorData] = useState({
@@ -90,7 +90,7 @@ const ColorCard = ({
   }, [color]);
 
   const selectColor = (event) => {
-    onSelect(colorData.hex);
+    onSelectColor(colorData.hex);
 
     if (event.target && event.target.blur) {
       event.target.blur();
@@ -110,14 +110,14 @@ const ColorCard = ({
           [`color-card--${size}`]: size,
         },
         {
-          'color-card--selectable': onSelect,
+          'color-card--selectable': onSelectColor,
         },
         className
       )}
-      onClick={onSelect && selectColor}
-      onKeyDown={onSelect && enterKeyHandler(selectColor)}
-      role={onSelect && 'button'}
-      tabIndex={onSelect && '0'}
+      onClick={onSelectColor && selectColor}
+      onKeyDown={onSelectColor && enterKeyHandler(selectColor)}
+      role={onSelectColor && 'button'}
+      tabIndex={onSelectColor && '0'}
       style={{ backgroundColor: colorData.hex }}
     >
       {!hideProperties && (
@@ -220,7 +220,7 @@ ColorCard.propTypes = {
   ]),
   size: PropTypes.oneOf(['small', 'medium', 'large', 'flex']),
   textSize: PropTypes.oneOf(['small', 'medium', 'large']),
-  onSelect: PropTypes.func,
+  onSelectColor: PropTypes.func,
 };
 
 export default withBaseColor(ColorCard);

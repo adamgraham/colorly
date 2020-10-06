@@ -8,6 +8,7 @@ const TintsAndShades = ({ baseColor, setBaseColor }) => (
     <ColorGroup layout="row">
       <ColorCard
         color={baseColor}
+        onSelectColor={setBaseColor}
         size="large"
         style={{ borderRight: '4px solid rgba(255, 255, 255, 0.125)' }}
       />

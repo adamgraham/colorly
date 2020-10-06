@@ -6,7 +6,7 @@ import { withBaseColor } from '../utils/hoc';
 const Saturation = ({ baseColor, setBaseColor }) => (
   <article className="page saturation">
     <ColorGroup layout="row">
-      <ColorCard color={baseColor} size="large" />
+      <ColorCard color={baseColor} onSelectColor={setBaseColor} size="large" />
       <ColorGroup layout="column">
         <ColorPalette
           baseColor={baseColor}

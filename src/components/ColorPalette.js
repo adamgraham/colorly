@@ -101,7 +101,7 @@ const ColorPalette = ({
           key={index}
           color={color}
           size="flex"
-          onSelect={onSelectColor}
+          onSelectColor={onSelectColor}
         />
       ))}
     </div>
