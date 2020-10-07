@@ -24,7 +24,7 @@ const Saturation = ({ baseColor, setBaseColor }) => (
 );
 
 Saturation.propTypes = {
-  baseColor: PropTypes.string.isRequired,
+  baseColor: PropTypes.string,
   setBaseColor: PropTypes.func,
 };
 

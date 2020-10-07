@@ -90,10 +90,6 @@
   flex-direction: column-reverse;
 }
 
-.color-card__primary-properties {
-  cursor: copy;
-}
-
 .color-card__secondary-properties {
   transition: visibility 0.3s, opacity 0.3s;
   visibility: hidden;
@@ -113,15 +109,18 @@
 }
 
 .color-card__copy {
-  font-size: 10pt !important;
   margin-left: 4px;
-  margin-top: -1px;
+  margin-top: -2px;
   transition: visibility 0.3s, opacity 0.3s;
   visibility: hidden;
   opacity: 0;
 }
 
-.color-card__properties:hover .color-card__copy {
+.color-card__copy .material-icons {
+  font-size: 18px;
+}
+
+.color-card:hover .color-card__copy {
   visibility: visible;
   opacity: 1;
 }

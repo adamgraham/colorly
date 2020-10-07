@@ -24,7 +24,7 @@ const Lightness = ({ baseColor, setBaseColor }) => (
 );
 
 Lightness.propTypes = {
-  baseColor: PropTypes.string.isRequired,
+  baseColor: PropTypes.string,
   setBaseColor: PropTypes.func,
 };
 

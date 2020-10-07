@@ -136,7 +136,7 @@ const Harmonies = ({ baseColor, setBaseColor, history }) => {
 };
 
 Harmonies.propTypes = {
-  baseColor: PropTypes.string.isRequired,
+  baseColor: PropTypes.string,
   setBaseColor: PropTypes.func,
   history: PropTypes.shape({
     location: PropTypes.shape({

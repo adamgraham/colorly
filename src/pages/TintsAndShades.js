@@ -29,7 +29,7 @@ const TintsAndShades = ({ baseColor, setBaseColor }) => (
 );
 
 TintsAndShades.propTypes = {
-  baseColor: PropTypes.string.isRequired,
+  baseColor: PropTypes.string,
   setBaseColor: PropTypes.func,
 };
 

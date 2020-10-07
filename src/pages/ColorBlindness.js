@@ -145,7 +145,7 @@ const ColorBlindness = ({ baseColor, setBaseColor, history }) => {
 };
 
 ColorBlindness.propTypes = {
-  baseColor: PropTypes.string.isRequired,
+  baseColor: PropTypes.string,
   setBaseColor: PropTypes.func,
   history: PropTypes.shape({
     location: PropTypes.shape({

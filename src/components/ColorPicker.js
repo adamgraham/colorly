@@ -68,7 +68,6 @@ const ColorPicker = React.forwardRef(
           aria-label="Randomize"
           className="shuffle-button"
           color="inherit"
-          fontSize="small"
           onClick={onShuffleClick}
         >
           <MaterialIcon>shuffle</MaterialIcon>
@@ -80,7 +79,6 @@ const ColorPicker = React.forwardRef(
               className="undo-button"
               color="inherit"
               disabled={!allowUndo}
-              fontSize="small"
               onClick={onUndoClick}
             >
               <MaterialIcon>undo</MaterialIcon>
@@ -90,7 +88,6 @@ const ColorPicker = React.forwardRef(
               className="redo-button"
               color="inherit"
               disabled={!allowRedo}
-              fontSize="small"
               onClick={onRedoClick}
             >
               <MaterialIcon>redo</MaterialIcon>
@@ -104,7 +101,6 @@ const ColorPicker = React.forwardRef(
               className="redo-button"
               color="inherit"
               disabled={!allowRedo}
-              fontSize="small"
               onClick={onRedoClick}
             >
               <MaterialIcon>redo</MaterialIcon>
@@ -114,7 +110,6 @@ const ColorPicker = React.forwardRef(
               className="undo-button"
               color="inherit"
               disabled={!allowUndo}
-              fontSize="small"
               onClick={onUndoClick}
             >
               <MaterialIcon>undo</MaterialIcon>

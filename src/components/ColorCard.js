@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Color from 'color';
 import {
   MaterialIcon,
+  MaterialIconButton,
   MaterialSnackbar,
   MaterialTooltip,
 } from '../components/material';
@@ -19,48 +20,11 @@ import {
 import { withBaseColor } from '../utils/hoc';
 import './ColorCard.css';
 
-const renderProperties = (properties, colorData) => (
-  <>
-    {properties.map((property) => {
-      switch (property) {
-        case 'hex':
-          return (
-            <div key="hex" className="color-card__hex">
-              <MaterialTooltip
-                title="Copy to clipboard"
-                placement="right"
-                arrow
-              >
-                <span className="hex-string">{colorData.hex}</span>
-              </MaterialTooltip>
-              <MaterialIcon className="color-card__copy">
-                content_copy
-              </MaterialIcon>
-            </div>
-          );
-        case 'rgb':
-          return <div key="rgb">{formatRGB(colorData.color)}</div>;
-        case 'cmyk':
-          return <div key="cmyk">{formatCMYK(colorData.color)}</div>;
-        case 'hsl':
-          return <div key="hsl">{formatHSL(colorData.color)}</div>;
-        case 'hsv':
-          return <div key="hsv">{formatHSV(colorData.color)}</div>;
-        case 'luminance':
-          return <div key="luminance">{formatLuminance(colorData.color)}</div>;
-        default:
-          return null;
-      }
-    })}
-  </>
-);
-
 const ColorCard = ({
   children,
   className,
   color,
-  properties = ['hex'],
-  secondaryProperties = ['rgb', 'cmyk', 'hsl', 'hsv'],
+  properties = ['rgb', 'cmyk', 'hsl', 'hsv'],
   hideProperties = false,
   copyable = true,
   position = 'top-left',
@@ -121,78 +85,101 @@ const ColorCard = ({
       style={{ backgroundColor: colorData.hex }}
     >
       {!hideProperties && (
-        <>
-          {copyable ? (
-            <>
-              <div
-                className="color-card__properties"
-                onClick={(event) => {
-                  event.stopPropagation();
-                }}
-                onKeyDown={enterKeyHandler(() => {})}
-                role="button"
-                tabIndex="-1"
-              >
-                <div
-                  className={classNames('color-card__primary-properties', {
-                    'body-9pt': textSize === 'small',
-                    'body-12pt': textSize === 'medium',
-                    'body-15pt': textSize === 'large',
-                  })}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    copyToClipboard(colorData.hex.toLowerCase(), () =>
-                      setCopyToastOpen(true)
-                    );
-                  }}
-                  onKeyDown={enterKeyHandler(() => {
-                    copyToClipboard(colorData.hex.toLowerCase(), () =>
-                      setCopyToastOpen(true)
-                    );
-                  })}
-                  role="button"
-                  tabIndex="-1"
-                >
-                  {renderProperties(properties, colorData)}
-                </div>
-                <div
-                  className={classNames('color-card__secondary-properties', {
-                    'body-9pt': textSize === 'small' || textSize === 'medium',
-                    'body-12pt': textSize === 'large',
-                  })}
-                >
-                  {renderProperties(secondaryProperties, colorData)}
-                </div>
-              </div>
-              <MaterialSnackbar
-                message={`Copied ${colorData.hex.toLowerCase()} to the clipboard`}
-                open={copyToastOpen}
-                autoHideDuration={3000}
-                onClose={() => setCopyToastOpen(false)}
-              />
-            </>
-          ) : (
-            <div className="color-card__properties">
-              <div
-                className={classNames('color-card__primary-properties', {
-                  'body-9pt': textSize === 'small',
-                  'body-12pt': textSize === 'medium',
-                  'body-15pt': textSize === 'large',
-                })}
-              >
-                {renderProperties(properties, colorData)}
-              </div>
-              <div
-                className={classNames('color-card__secondary-properties', {
-                  'body-9pt': textSize === 'small' || textSize === 'medium',
-                  'body-12pt': textSize === 'large',
-                })}
-              >
-                {renderProperties(secondaryProperties, colorData)}
-              </div>
+        <div
+          className="color-card__properties"
+          role="button"
+          tabIndex="-1"
+          onClick={(event) => event.stopPropagation()}
+          onKeyDown={enterKeyHandler(() => {})}
+        >
+          <div
+            className={classNames('color-card__primary-properties', {
+              'body-9pt': textSize === 'small',
+              'body-12pt': textSize === 'medium',
+              'body-15pt': textSize === 'large',
+            })}
+          >
+            <div key="hex" className="color-card__hex">
+              <span className="hex-string">{colorData.hex}</span>
+              {copyable && (
+                <>
+                  <MaterialTooltip
+                    title="Copy to clipboard"
+                    placement="right"
+                    arrow
+                  >
+                    <div className="color-card__copy">
+                      <MaterialIconButton
+                        aria-label="Copy"
+                        className="color-card__copy-button"
+                        color="inherit"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          copyToClipboard(colorData.hex.toLowerCase(), () =>
+                            setCopyToastOpen(true)
+                          );
+                        }}
+                      >
+                        <MaterialIcon fontSize="small">
+                          content_copy
+                        </MaterialIcon>
+                      </MaterialIconButton>
+                    </div>
+                  </MaterialTooltip>
+                  <MaterialSnackbar
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                    message={`"${colorData.hex.toLowerCase()}" copied to the clipboard`}
+                    open={copyToastOpen}
+                    autoHideDuration={3000}
+                    onClose={() => setCopyToastOpen(false)}
+                    action={
+                      <MaterialIconButton
+                        aria-label="Close"
+                        color="inherit"
+                        onClick={() => setCopyToastOpen(false)}
+                      >
+                        <MaterialIcon>close</MaterialIcon>
+                      </MaterialIconButton>
+                    }
+                  />
+                </>
+              )}
             </div>
-          )}
-        </>
+          </div>
+          <div
+            className={classNames('color-card__secondary-properties', {
+              'body-9pt': textSize === 'small' || textSize === 'medium',
+              'body-12pt': textSize === 'large',
+            })}
+          >
+            {properties.map((property) => {
+              switch (property) {
+                case 'hex':
+                  return (
+                    <div key="hex" className="hex-string">
+                      {colorData.hex}
+                    </div>
+                  );
+                case 'rgb':
+                  return <div key="rgb">{formatRGB(colorData.color)}</div>;
+                case 'cmyk':
+                  return <div key="cmyk">{formatCMYK(colorData.color)}</div>;
+                case 'hsl':
+                  return <div key="hsl">{formatHSL(colorData.color)}</div>;
+                case 'hsv':
+                  return <div key="hsv">{formatHSV(colorData.color)}</div>;
+                case 'luminance':
+                  return (
+                    <div key="luminance">
+                      {formatLuminance(colorData.color)}
+                    </div>
+                  );
+                default:
+                  return null;
+              }
+            })}
+          </div>
+        </div>
       )}
       {children}
     </div>
@@ -205,9 +192,6 @@ ColorCard.propTypes = {
   baseColor: PropTypes.string,
   color: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   properties: PropTypes.arrayOf(
-    PropTypes.oneOf(['hex', 'rgb', 'cmyk', 'hsl', 'luminance'])
-  ),
-  secondaryProperties: PropTypes.arrayOf(
     PropTypes.oneOf(['hex', 'rgb', 'cmyk', 'hsl', 'luminance'])
   ),
   hideProperties: PropTypes.bool,

@@ -97,8 +97,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
             color={baseColor}
             copyable={false}
             position="top-left"
-            properties={['luminance']}
-            secondaryProperties={[]}
+            properties={[]}
             hideProperties
             text="large"
           >
@@ -108,8 +107,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
             color={secondaryBaseColor}
             copyable={false}
             position="top-right"
-            properties={['luminance']}
-            secondaryProperties={[]}
+            properties={[]}
             hideProperties
             text="large"
           >
