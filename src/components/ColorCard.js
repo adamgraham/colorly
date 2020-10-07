@@ -29,7 +29,6 @@ const ColorCard = ({
   copyable = true,
   position = 'top-left',
   size = 'flex',
-  textSize = 'medium',
   onSelectColor,
 }) => {
   const [copyToastOpen, setCopyToastOpen] = useState(false);
@@ -92,74 +91,52 @@ const ColorCard = ({
           onClick={(event) => event.stopPropagation()}
           onKeyDown={enterKeyHandler(() => {})}
         >
-          <div
-            className={classNames('color-card__primary-properties', {
-              'body-9pt': textSize === 'small',
-              'body-12pt': textSize === 'medium',
-              'body-15pt': textSize === 'large',
-            })}
-          >
-            <div key="hex" className="color-card__hex">
-              <span className="hex-string">{colorData.hex}</span>
-              {copyable && (
-                <>
-                  <MaterialTooltip
-                    title="Copy to clipboard"
-                    placement="right"
-                    arrow
-                  >
-                    <div className="color-card__copy">
-                      <MaterialIconButton
-                        aria-label="Copy"
-                        className="color-card__copy-button"
-                        color="inherit"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          copyToClipboard(colorData.hex.toLowerCase(), () =>
-                            setCopyToastOpen(true)
-                          );
-                        }}
-                      >
-                        <MaterialIcon fontSize="small">
-                          content_copy
-                        </MaterialIcon>
-                      </MaterialIconButton>
-                    </div>
-                  </MaterialTooltip>
-                  <MaterialSnackbar
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-                    message={`"${colorData.hex.toLowerCase()}" copied to the clipboard`}
-                    open={copyToastOpen}
-                    autoHideDuration={3000}
-                    onClose={() => setCopyToastOpen(false)}
-                    action={
-                      <MaterialIconButton
-                        aria-label="Close"
-                        color="inherit"
-                        onClick={() => setCopyToastOpen(false)}
-                      >
-                        <MaterialIcon>close</MaterialIcon>
-                      </MaterialIconButton>
-                    }
-                  />
-                </>
-              )}
-            </div>
+          <div key="hex" className="color-card__hex">
+            <span className="typography-hex">{colorData.hex}</span>
+            {copyable && (
+              <>
+                <MaterialTooltip
+                  title="Copy to clipboard"
+                  placement="right"
+                  arrow
+                >
+                  <div className="color-card__copy">
+                    <MaterialIconButton
+                      aria-label="Copy"
+                      className="color-card__copy-button"
+                      color="inherit"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        copyToClipboard(colorData.hex.toLowerCase(), () =>
+                          setCopyToastOpen(true)
+                        );
+                      }}
+                    >
+                      <MaterialIcon>content_copy</MaterialIcon>
+                    </MaterialIconButton>
+                  </div>
+                </MaterialTooltip>
+                <MaterialSnackbar
+                  message={`"${colorData.hex.toLowerCase()}" copied to the clipboard`}
+                  open={copyToastOpen}
+                  autoHideDuration={3000}
+                  onClose={() => setCopyToastOpen(false)}
+                  action={
+                    <MaterialIconButton
+                      aria-label="Close"
+                      color="inherit"
+                      onClick={() => setCopyToastOpen(false)}
+                    >
+                      <MaterialIcon>close</MaterialIcon>
+                    </MaterialIconButton>
+                  }
+                />
+              </>
+            )}
           </div>
-          <div
-            className={classNames('color-card__secondary-properties', {
-              'body-9pt': textSize === 'small' || textSize === 'medium',
-              'body-12pt': textSize === 'large',
-            })}
-          >
+          <div className="color-card__secondary-properties typography-properties">
             {properties.map((property) => {
               switch (property) {
-                case 'hex':
-                  return (
-                    <div key="hex" className="hex-string">
-                      {colorData.hex}
-                    </div>
-                  );
                 case 'rgb':
                   return <div key="rgb">{formatRGB(colorData.color)}</div>;
                 case 'cmyk':
@@ -192,7 +169,7 @@ ColorCard.propTypes = {
   baseColor: PropTypes.string,
   color: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   properties: PropTypes.arrayOf(
-    PropTypes.oneOf(['hex', 'rgb', 'cmyk', 'hsl', 'luminance'])
+    PropTypes.oneOf(['rgb', 'cmyk', 'hsl', 'luminance'])
   ),
   hideProperties: PropTypes.bool,
   copyable: PropTypes.bool,
@@ -203,7 +180,6 @@ ColorCard.propTypes = {
     'bottom-right',
   ]),
   size: PropTypes.oneOf(['small', 'medium', 'large', 'flex']),
-  textSize: PropTypes.oneOf(['small', 'medium', 'large']),
   onSelectColor: PropTypes.func,
 };
 

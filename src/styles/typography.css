@@ -1,15 +1,12 @@
 :root {
   --font-family: "Poppins", "Roboto", "Helvetica", "Arial", sans-serif;
-  /* --font-family: "Roboto", "Helvetica", "Arial", sans-serif; */
+  --font-family-mono: "Roboto Mono", "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 12pt;
-  line-height: 21pt;
   color: var(--text-color-default);
 }
 
@@ -19,47 +16,54 @@ b {
 
 a {
   color: var(--text-color-link);
+}
+
+.typography-app-title {
+  font-family: var(--font-family);
   font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
 }
 
-.body-15pt {
+.typography-page-title {
   font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 15pt;
-  line-height: 21pt;
-  letter-spacing: 0;
-}
-
-.body-12pt {
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 12pt;
-  line-height: 18pt;
-  letter-spacing: 0;
-}
-
-.body-9pt {
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 9pt;
-  line-height: 13pt;
-  letter-spacing: 0;
-}
-
-.weight-bold {
-  font-weight: 700;
-}
-
-.weight-semibold {
   font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
 }
 
-.weight-medium {
+.typography-menu {
+  font-family: var(--font-family);
   font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
 }
 
-.weight-regular {
-  font-weight: 400;
+.typography-input {
+  font-family: var(--font-family-mono);
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: lowercase;
+}
+
+.typography-hex,
+.typography-number {
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  line-height: 22px;
+  text-transform: lowercase;
+}
+
+.typography-properties {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.typography-credits {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .text-align-left {
@@ -72,8 +76,4 @@ a {
 
 .text-align-right {
   text-align: right;
-}
-
-.hex-string {
-  text-transform: lowercase;
 }

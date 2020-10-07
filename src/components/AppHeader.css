@@ -19,12 +19,6 @@
 }
 
 .app-header__title {
-  font-family: var(--font-family);
-  font-weight: 600;
-  font-size: 18pt;
-  line-height: 24pt;
-  letter-spacing: 0;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 

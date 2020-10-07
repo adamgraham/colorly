@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const formatRGB = (color) => {
   const red = Math.round(color.red());
   const green = Math.round(color.green());
@@ -29,7 +31,12 @@ export const formatHSV = (color) => {
 
 export const formatLuminance = (color) => {
   const luminance = color.luminosity();
-  return `Luminance: ${
-    Math.round((luminance + Number.EPSILON) * 10000) / 10000
-  }`;
+  return (
+    <>
+      Luminance{' '}
+      <span className="typography-number">
+        {Math.round((luminance + Number.EPSILON) * 10000) / 10000}
+      </span>
+    </>
+  );
 };

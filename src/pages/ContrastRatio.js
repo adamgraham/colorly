@@ -50,7 +50,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
     <article className="page contrast-ratio">
       <ColorGroup layout="column">
         <PageHeader layout="space-between">
-          <span className="body-12pt text-align-left margin-left-sm">
+          <span className="text-align-left margin-left-sm">
             {formatLuminance(_baseColor)}
           </span>
           <MaterialTooltip
@@ -75,7 +75,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
               <MaterialChip
                 className="margin-left-md"
                 color={level !== '' ? 'primary' : 'secondary'}
-                label={level !== '' ? level : 'Fails'}
+                label={level !== '' ? <b>{level}</b> : <b>Fails</b>}
                 clickable
                 component="a"
                 href={
@@ -88,7 +88,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
               />
             </span>
           </MaterialTooltip>
-          <span className="body-12pt text-align-right margin-right-sm">
+          <span className="text-align-right margin-right-sm">
             {formatLuminance(_secondaryColor)}
           </span>
         </PageHeader>

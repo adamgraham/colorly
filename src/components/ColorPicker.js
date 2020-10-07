@@ -60,7 +60,7 @@ const ColorPicker = React.forwardRef(
           value={color}
         />
         {showLabel && (
-          <label htmlFor={id} className="hex-string body-15pt margin-left-md">
+          <label htmlFor={id} className="typography-input margin-left-md">
             {color}
           </label>
         )}

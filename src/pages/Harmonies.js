@@ -88,7 +88,7 @@ const Harmonies = ({ baseColor, setBaseColor, history }) => {
             </MaterialIcon>
           }
         >
-          <b className="page-header__title">
+          <b className="page-header__title typography-page-title">
             {(matchedRoute && matchedRoute.name) || 'Select a harmony'}
           </b>
         </MaterialButton>
@@ -109,7 +109,7 @@ const Harmonies = ({ baseColor, setBaseColor, history }) => {
                 history.push(route.path);
               }}
             >
-              <span className="body-12pt">{route.name}</span>
+              <span className="typography-menu">{route.name}</span>
             </MaterialMenuItem>
           ))}
         </MaterialMenu>

@@ -102,7 +102,7 @@ const AppHeader = ({
           onClick={openPageMenu}
           startIcon={<MaterialIcon>menu</MaterialIcon>}
         >
-          <b className="app-header__title">
+          <b className="app-header__title typography-app-title">
             {(matchedRoute && matchedRoute.name) || 'Color Tools'}
           </b>
         </MaterialButton>
@@ -122,7 +122,7 @@ const AppHeader = ({
                 history.push(route.path);
               }}
             >
-              <span className="body-12pt">{route.name}</span>
+              <span className="typography-menu">{route.name}</span>
             </MaterialMenuItem>
           ))}
         </MaterialMenu>
@@ -141,7 +141,7 @@ const AppHeader = ({
           value={new Color(secondaryBaseColor).hex()}
         />
       ) : (
-        <div className="body-9pt text-align-right">
+        <div className="text-align-right typography-credits">
           Made with{' '}
           <span aria-label="love" role="img">
             ❤️
@@ -152,7 +152,7 @@ const AppHeader = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            Adam Graham
+            <b>Adam Graham</b>
           </a>
         </div>
       )}

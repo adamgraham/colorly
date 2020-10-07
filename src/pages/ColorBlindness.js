@@ -94,7 +94,7 @@ const ColorBlindness = ({ baseColor, setBaseColor, history }) => {
             </MaterialIcon>
           }
         >
-          <b className="page-header__title">
+          <b className="page-header__title typography-page-title">
             {(matchedRoute && matchedRoute.name) || 'Select a color blindness'}
           </b>
         </MaterialButton>
@@ -115,7 +115,7 @@ const ColorBlindness = ({ baseColor, setBaseColor, history }) => {
                 history.push(route.path);
               }}
             >
-              <span className="body-12pt">{route.name}</span>
+              <span className="typography-menu">{route.name}</span>
             </MaterialMenuItem>
           ))}
         </MaterialMenu>

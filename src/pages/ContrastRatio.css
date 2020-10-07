@@ -21,12 +21,6 @@
   line-height: 30pt;
 }
 
-.page.contrast-ratio .contrast-ratio__level {
-  font-weight: 600;
-  font-size: 15pt;
-  line-height: 21pt;
-}
-
 .page.contrast-ratio .color-card {
   overflow: hidden;
 }
