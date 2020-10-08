@@ -4,5 +4,6 @@ export { default as MaterialMenu } from '@material-ui/core/Menu';
 export { default as MaterialMenuItem } from '@material-ui/core/MenuItem';
 export { default as MaterialIcon } from '@material-ui/core/Icon';
 export { default as MaterialIconButton } from '@material-ui/core/IconButton';
+export { default as MaterialInput } from '@material-ui/core/Input';
 export { default as MaterialSnackbar } from '@material-ui/core/Snackbar';
 export { default as MaterialTooltip } from '@material-ui/core/Tooltip';

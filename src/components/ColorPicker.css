@@ -12,9 +12,8 @@
   cursor: pointer;
 }
 
-.color-picker > label {
-  width: 100px;
-  cursor: pointer;
+.color-picker__input {
+  width: 120px;
 }
 
 .color-picker--left-aligned {
@@ -24,6 +23,10 @@
 
 .color-picker--right-aligned {
   flex-direction: row-reverse;
+  text-align: right;
+}
+
+.color-picker--right-aligned .color-picker__input > input {
   text-align: right;
 }
 

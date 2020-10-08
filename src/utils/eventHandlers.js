@@ -1,4 +1,4 @@
-export const enterKeyHandler = (callback) => (event) => {
+export const enterKeyHandler = (callback = () => {}) => (event) => {
   if (event.defaultPrevented) {
     return;
   }

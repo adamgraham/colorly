@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Color from 'color';
 import {
   MaterialButton,
   MaterialIcon,
@@ -92,8 +91,7 @@ const AppHeader = ({
         onShuffleClick={() => dispatch(shuffleBaseColor())}
         onUndoClick={() => dispatch(undoBaseColor())}
         onRedoClick={() => dispatch(redoBaseColor())}
-        showLabel
-        value={new Color(baseColor).hex()}
+        value={baseColor}
       />
       <div className="flex justify-content-center align-items-center">
         <MaterialButton
@@ -137,8 +135,7 @@ const AppHeader = ({
           onShuffleClick={() => dispatch(shuffleSecondaryBaseColor())}
           onUndoClick={() => dispatch(undoSecondaryBaseColor())}
           onRedoClick={() => dispatch(redoSecondaryBaseColor())}
-          showLabel
-          value={new Color(secondaryBaseColor).hex()}
+          value={secondaryBaseColor}
         />
       ) : (
         <div className="text-align-right typography-credits">

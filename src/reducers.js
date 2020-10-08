@@ -56,7 +56,7 @@ const addSecondaryBaseColor = (state, color) => {
 const setBaseColor = (state, action) => {
   try {
     new Color(action.color);
-    return addBaseColor(state, action.color);
+    return addBaseColor(state, action.color.toLowerCase());
   } catch {
     return state;
   }
@@ -65,7 +65,7 @@ const setBaseColor = (state, action) => {
 const setSecondaryBaseColor = (state, action) => {
   try {
     new Color(action.color);
-    return addSecondaryBaseColor(state, action.color);
+    return addSecondaryBaseColor(state, action.color.toLowerCase());
   } catch {
     return state;
   }

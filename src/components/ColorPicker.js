@@ -2,7 +2,13 @@ import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
-import { MaterialIcon, MaterialIconButton } from '../components/material';
+import Color from 'color';
+import {
+  MaterialIcon,
+  MaterialIconButton,
+  MaterialInput,
+} from '../components/material';
+import { enterKeyHandler } from '../utils/eventHandlers';
 import './ColorPicker.css';
 
 const ColorPicker = React.forwardRef(
@@ -17,32 +23,54 @@ const ColorPicker = React.forwardRef(
       onShuffleClick = () => {},
       onUndoClick = () => {},
       onRedoClick = () => {},
-      showLabel = false,
       value,
     },
     ref
   ) => {
-    const [color, setColor] = useState('#000000');
+    const [color, setColor] = useState({ input: '#000000', picker: '#000000' });
 
     useEffect(() => {
-      if (value && value !== color) {
-        setColor(value);
+      if (value && color.picker !== value) {
+        setColor({ input: value, picker: value });
       }
-    }, [value, color, ref]);
+    }, [color, onColorChange, value]);
 
-    const changeColor = useMemo(
+    const pickColor = useMemo(
       () =>
         debounce((pickedColor) => {
-          onColorChange(pickedColor);
-          setColor(pickedColor);
+          if (pickedColor) {
+            onColorChange(pickedColor.toLowerCase());
+          }
         }, 100),
       [onColorChange]
     );
 
-    const handleChange = (event) => {
-      const { value } = event.currentTarget;
-      changeColor(value);
-    };
+    const buttons = [
+      <MaterialIconButton
+        aria-label="Undo"
+        key="undo-button"
+        className="undo-button"
+        color="inherit"
+        disabled={!allowUndo}
+        onClick={onUndoClick}
+      >
+        <MaterialIcon>undo</MaterialIcon>
+      </MaterialIconButton>,
+      <MaterialIconButton
+        aria-label="Redo"
+        key="redo-button"
+        className="redo-button"
+        color="inherit"
+        disabled={!allowRedo}
+        onClick={onRedoClick}
+      >
+        <MaterialIcon>redo</MaterialIcon>
+      </MaterialIconButton>,
+    ];
+
+    if (alignment === 'right') {
+      buttons.reverse();
+    }
 
     return (
       <div
@@ -54,16 +82,36 @@ const ColorPicker = React.forwardRef(
       >
         <input
           id={id}
-          onChange={handleChange}
+          onChange={(event) => {
+            pickColor(event.target.value);
+          }}
           ref={ref}
           type="color"
-          value={color}
+          value={color.picker}
         />
-        {showLabel && (
-          <label htmlFor={id} className="typography-input margin-left-md">
-            {color}
-          </label>
-        )}
+        <MaterialInput
+          className={classNames('color-picker__input', 'typography-input', {
+            'margin-left-lg': alignment === 'left',
+            'margin-right-md': alignment === 'left',
+            'margin-right-lg': alignment === 'right',
+            'margin-left-md': alignment === 'right',
+          })}
+          onChange={(event) => {
+            setColor({ ...color, input: event.target.value });
+          }}
+          onKeyDown={enterKeyHandler((event) => {
+            event.target.blur();
+          })}
+          onBlur={(event) => {
+            try {
+              const inputColor = new Color(event.target.value);
+              onColorChange(inputColor.hex().toLowerCase());
+            } catch {
+              setColor({ ...color, input: value });
+            }
+          }}
+          value={color.input}
+        />
         <MaterialIconButton
           aria-label="Randomize"
           className="shuffle-button"
@@ -72,50 +120,7 @@ const ColorPicker = React.forwardRef(
         >
           <MaterialIcon>shuffle</MaterialIcon>
         </MaterialIconButton>
-        {alignment === 'left' && (
-          <>
-            <MaterialIconButton
-              aria-label="Undo"
-              className="undo-button"
-              color="inherit"
-              disabled={!allowUndo}
-              onClick={onUndoClick}
-            >
-              <MaterialIcon>undo</MaterialIcon>
-            </MaterialIconButton>
-            <MaterialIconButton
-              aria-label="Redo"
-              className="redo-button"
-              color="inherit"
-              disabled={!allowRedo}
-              onClick={onRedoClick}
-            >
-              <MaterialIcon>redo</MaterialIcon>
-            </MaterialIconButton>
-          </>
-        )}
-        {alignment === 'right' && (
-          <>
-            <MaterialIconButton
-              aria-label="Redo"
-              className="redo-button"
-              color="inherit"
-              disabled={!allowRedo}
-              onClick={onRedoClick}
-            >
-              <MaterialIcon>redo</MaterialIcon>
-            </MaterialIconButton>
-            <MaterialIconButton
-              aria-label="Undo"
-              className="undo-button"
-              color="inherit"
-              disabled={!allowUndo}
-              onClick={onUndoClick}
-            >
-              <MaterialIcon>undo</MaterialIcon>
-            </MaterialIconButton>
-          </>
-        )}
+        {buttons}
       </div>
     );
   }
