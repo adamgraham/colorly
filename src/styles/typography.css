@@ -3,21 +3,6 @@
   --font-family-mono: "Roboto Mono", "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: var(--font-family);
-  color: var(--text-color-default);
-}
-
-b {
-  font-weight: 600;
-}
-
-a {
-  color: var(--text-color-link);
-}
-
 .typography-app-title {
   font-family: var(--font-family);
   font-weight: 600;
@@ -55,12 +40,14 @@ a {
 }
 
 .typography-properties {
+  font-family: var(--font-family);
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
 }
 
 .typography-credits {
+  font-family: var(--font-family);
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
