@@ -2,14 +2,9 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Color from 'color';
-import {
-  MaterialIcon,
-  MaterialIconButton,
-  MaterialSnackbar,
-  MaterialTooltip,
-} from '../components/material';
+import { MaterialIcon, MaterialIconButton } from '../components/material';
 import { white, black } from '../utils/colors';
-import { copyToClipboard, enterKeyHandler } from '../utils/eventHandlers';
+import { enterKeyHandler } from '../utils/eventHandlers';
 import {
   formatCMYK,
   formatHSL,
@@ -31,7 +26,6 @@ const ColorCard = ({
   size = 'flex',
   onSelectColor,
 }) => {
-  const [copyToastOpen, setCopyToastOpen] = useState(false);
   const [colorData, setColorData] = useState({
     color: new Color(color),
     hex: color,
@@ -43,10 +37,9 @@ const ColorCard = ({
     const _color = new Color(color);
     const whiteContrast = _color.contrast(white);
     const blackContrast = _color.contrast(black);
-
     setColorData({
       color: _color,
-      hex: _color.hex(),
+      hex: _color.hex().toLowerCase(),
       light: blackContrast >= whiteContrast,
       dark: whiteContrast > blackContrast,
     });
@@ -89,49 +82,28 @@ const ColorCard = ({
           role="button"
           tabIndex="-1"
           onClick={(event) => event.stopPropagation()}
-          onKeyDown={enterKeyHandler(() => {})}
+          onKeyDown={enterKeyHandler()}
         >
           <div key="hex" className="color-card__hex">
             <span className="typography-hex">{colorData.hex}</span>
             {copyable && (
-              <>
-                <MaterialTooltip
-                  title="Copy to clipboard"
-                  placement="right"
-                  arrow
+              <div className="color-card__copy">
+                <MaterialIconButton
+                  aria-label="Copy"
+                  className="color-card__copy-button"
+                  color="inherit"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    document.dispatchEvent(
+                      new CustomEvent('CopyColorToClipboard', {
+                        detail: colorData.hex.toLowerCase(),
+                      })
+                    );
+                  }}
                 >
-                  <div className="color-card__copy">
-                    <MaterialIconButton
-                      aria-label="Copy"
-                      className="color-card__copy-button"
-                      color="inherit"
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        copyToClipboard(colorData.hex.toLowerCase(), () =>
-                          setCopyToastOpen(true)
-                        );
-                      }}
-                    >
-                      <MaterialIcon>content_copy</MaterialIcon>
-                    </MaterialIconButton>
-                  </div>
-                </MaterialTooltip>
-                <MaterialSnackbar
-                  message={`"${colorData.hex.toLowerCase()}" copied to the clipboard`}
-                  open={copyToastOpen}
-                  autoHideDuration={3000}
-                  onClose={() => setCopyToastOpen(false)}
-                  action={
-                    <MaterialIconButton
-                      aria-label="Close"
-                      color="inherit"
-                      onClick={() => setCopyToastOpen(false)}
-                    >
-                      <MaterialIcon>close</MaterialIcon>
-                    </MaterialIconButton>
-                  }
-                />
-              </>
+                  <MaterialIcon>content_copy</MaterialIcon>
+                </MaterialIconButton>
+              </div>
             )}
           </div>
           <div className="color-card__secondary-properties typography-properties">
@@ -169,7 +141,7 @@ ColorCard.propTypes = {
   baseColor: PropTypes.string,
   color: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   properties: PropTypes.arrayOf(
-    PropTypes.oneOf(['rgb', 'cmyk', 'hsl', 'luminance'])
+    PropTypes.oneOf(['rgb', 'cmyk', 'hsl', 'hsv', 'luminance'])
   ),
   hideProperties: PropTypes.bool,
   copyable: PropTypes.bool,

@@ -111,7 +111,7 @@ const undoSecondaryBaseColor = (state, action) => {
   };
 };
 
-const bindings = {
+const handlers = {
   SET_SELECTED_HARMONY: setSelectedHarmony,
   SET_SELECTED_COLOR_BLINDNESS: setSelectedColorBlindness,
   SET_BASE_COLOR: setBaseColor,
@@ -125,7 +125,7 @@ const bindings = {
 };
 
 const color = (state = defaultState, action) => {
-  return bindings[action.type] ? bindings[action.type](state, action) : state;
+  return handlers[action.type] ? handlers[action.type](state, action) : state;
 };
 
 const reducers = combineReducers({

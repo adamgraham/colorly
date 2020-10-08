@@ -33,7 +33,7 @@ export const getSelection = () => {
   }
 };
 
-export const copyToClipboard = (str, onCopyComplete = () => {}) => {
+export const copyToClipboard = (str) => {
   const element = document.createElement('textarea');
   element.value = str;
   element.setAttribute('readonly', '');
@@ -43,5 +43,4 @@ export const copyToClipboard = (str, onCopyComplete = () => {}) => {
   element.select();
   document.execCommand('copy');
   document.body.removeChild(element);
-  onCopyComplete();
 };

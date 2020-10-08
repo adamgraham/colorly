@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { AppHeader } from './components';
+import { AppHeader, CopyToClipboardToast } from './components';
 import Routes from './routes';
 import store from './store';
 import './App.css';
@@ -13,6 +13,7 @@ const App = () => (
     <main>
       <Routes />
     </main>
+    <CopyToClipboardToast />
   </div>
 );
 
