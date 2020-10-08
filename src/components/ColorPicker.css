@@ -13,6 +13,9 @@
 }
 
 .color-picker__input {
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  line-height: 24px !important;
   width: 120px;
 }
 

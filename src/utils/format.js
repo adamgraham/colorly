@@ -33,7 +33,7 @@ export const formatLuminance = (color) => {
   const luminance = color.luminosity();
   return (
     <>
-      Luminance{' '}
+      <span className="typography-number-label margin-left-md">Luminance </span>
       <span className="typography-number">
         {Math.round((luminance + Number.EPSILON) * 10000) / 10000}
       </span>

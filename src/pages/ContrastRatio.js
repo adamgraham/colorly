@@ -50,7 +50,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
     <article className="page contrast-ratio">
       <ColorGroup layout="column">
         <PageHeader layout="space-between">
-          <span className="text-align-left margin-left-sm">
+          <span className="text-align-left margin-left-xxxl">
             {formatLuminance(_baseColor)}
           </span>
           <MaterialTooltip
@@ -88,7 +88,7 @@ const ContrastRatio = ({ baseColor, secondaryBaseColor }) => {
               />
             </span>
           </MaterialTooltip>
-          <span className="text-align-right margin-right-sm">
+          <span className="text-align-right margin-right-xxxl">
             {formatLuminance(_secondaryColor)}
           </span>
         </PageHeader>
