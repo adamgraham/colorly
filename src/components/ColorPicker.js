@@ -28,6 +28,7 @@ const ColorPicker = React.forwardRef(
     ref
   ) => {
     const [color, setColor] = useState({ input: '#000000', picker: '#000000' });
+    const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
       if (value && color.picker !== value) {
@@ -102,11 +103,17 @@ const ColorPicker = React.forwardRef(
             'margin-right-lg': alignment === 'right',
             'margin-left-md': alignment === 'right',
           })}
+          error={hasError}
           onChange={(event) => {
             setColor({ ...color, input: event.target.value });
           }}
           onKeyDown={enterKeyHandler((event) => {
-            event.target.blur();
+            try {
+              new Color(event.target.value.toLowerCase());
+              event.target.blur();
+            } catch {
+              setHasError(true);
+            }
           })}
           onBlur={(event) => {
             try {
@@ -115,6 +122,7 @@ const ColorPicker = React.forwardRef(
             } catch {
               setColor({ ...color, input: value });
             }
+            setHasError(false);
           }}
           value={color.input}
         />
