@@ -5,6 +5,7 @@ import { setBaseColor } from './actions';
 import {
   ColorBlindness,
   ContrastRatio,
+  GradientPreview,
   Harmonies,
   Hues,
   Lightness,
@@ -51,6 +52,13 @@ export const routes = {
     name: 'Contrast Ratio',
     component: ContrastRatio,
     useSubheader: true,
+    useSecondaryColor: true,
+  },
+  gradientPreview: {
+    path: '/gradient',
+    name: 'Gradient Preview',
+    component: GradientPreview,
+    useSubheader: false,
     useSecondaryColor: true,
   },
 };

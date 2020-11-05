@@ -1,7 +1,10 @@
 export const getBaseColor = (state) =>
   state.color.baseColors[state.color.baseColorIndex];
+export const getBaseColors = (state) => state.color.baseColors;
 export const getSecondaryBaseColor = (state) =>
   state.color.secondaryBaseColors[state.color.secondaryBaseColorIndex];
+export const getSecondaryBaseColors = (state) =>
+  state.color.secondaryBaseColors;
 
 export const getSelectedHarmony = (state) => state.color.selectedHarmony;
 export const getSelectedColorBlindness = (state) =>

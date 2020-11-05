@@ -32,11 +32,11 @@ export const formatHSV = (color) => {
 export const formatLuminance = (color) => {
   const luminance = color.luminosity();
   return (
-    <>
+    <React.Fragment>
       <span className="typography-number-label margin-left-md">Luminance </span>
       <span className="typography-number">
         {Math.round((luminance + Number.EPSILON) * 10000) / 10000}
       </span>
-    </>
+    </React.Fragment>
   );
 };
