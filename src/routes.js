@@ -32,7 +32,7 @@ export const routes = {
   },
   hues: {
     path: '/hues',
-    name: 'Hues',
+    name: 'Color Hues',
     component: Hues,
   },
   harmonies: {
