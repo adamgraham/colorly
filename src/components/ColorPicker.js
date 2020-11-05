@@ -80,15 +80,21 @@ const ColorPicker = React.forwardRef(
           className
         )}
       >
-        <input
-          id={id}
-          onChange={(event) => {
-            pickColor(event.target.value);
-          }}
-          ref={ref}
-          type="color"
-          value={color.picker}
-        />
+        <div className="color-picker__selector">
+          <input
+            id={id}
+            onChange={(event) => {
+              pickColor(event.target.value);
+            }}
+            ref={ref}
+            type="color"
+            value={color.picker}
+          />
+          <div
+            className="color-picker__preview"
+            style={{ backgroundColor: color.picker }}
+          />
+        </div>
         <MaterialInput
           className={classNames('color-picker__input', 'typography-input', {
             'margin-left-lg': alignment === 'left',
