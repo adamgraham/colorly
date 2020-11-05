@@ -30,16 +30,16 @@ export const routes = {
     name: 'Saturation',
     component: Saturation,
   },
-  hues: {
-    path: '/hues',
-    name: 'Color Hues',
-    component: Hues,
-  },
   harmonies: {
     path: '/harmonies',
     name: 'Harmonies',
     component: Harmonies,
     useSubheader: true,
+  },
+  hues: {
+    path: '/hues',
+    name: 'Color Hues',
+    component: Hues,
   },
   colorBlindness: {
     path: '/color-blindness',
