@@ -26,8 +26,14 @@
 
 .typography-input {
   font-family: var(--font-family-mono);
-  font-size: 18px;
+  font-weight: 400 !important;
+  font-size: 30px;
   line-height: 24px;
+}
+
+.typography-input.Mui-focused,
+.typography-input:hover {
+  font-weight: 500 !important;
 }
 
 .typography-hex {
