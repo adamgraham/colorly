@@ -1,5 +1,6 @@
 export { default as MaterialButton } from '@material-ui/core/Button';
 export { default as MaterialChip } from '@material-ui/core/Chip';
+export { default as MaterialDialog } from '@material-ui/core/Dialog';
 export { default as MaterialMenu } from '@material-ui/core/Menu';
 export { default as MaterialMenuItem } from '@material-ui/core/MenuItem';
 export { default as MaterialIcon } from '@material-ui/core/Icon';

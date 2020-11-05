@@ -1,0 +1,15 @@
+.about-dialog-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.about-dialog {
+  padding: 24px;
+}
+
+.about-dialog .close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}

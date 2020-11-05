@@ -9,6 +9,7 @@ import {
   MaterialMenu,
   MaterialMenuItem,
 } from './material';
+import AboutDialog from './AboutDialog';
 import ColorPicker from './ColorPicker';
 import {
   redoBaseColor,
@@ -138,20 +139,7 @@ const AppHeader = ({
           value={secondaryBaseColor}
         />
       ) : (
-        <div className="text-align-right typography-credits">
-          Made with{' '}
-          <span aria-label="love" role="img">
-            ❤️
-          </span>{' '}
-          by&nbsp;
-          <a
-            href="https://www.adamgraham.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <b>Adam Graham</b>
-          </a>
-        </div>
+        <AboutDialog />
       )}
     </header>
   );
