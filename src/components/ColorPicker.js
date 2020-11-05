@@ -110,7 +110,7 @@ const ColorPicker = React.forwardRef(
           })}
           onBlur={(event) => {
             try {
-              const inputColor = new Color(event.target.value);
+              const inputColor = new Color(event.target.value.toLowerCase());
               onColorChange(inputColor.hex().toLowerCase());
             } catch {
               setColor({ ...color, input: value });
