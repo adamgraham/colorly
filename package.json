@@ -1,6 +1,6 @@
 {
   "name": "colorly",
-  "version": "0.1.0",
+  "version": "1.0.3",
   "homepage": "https://adamgraham.github.io/colorly/",
   "private": true,
   "dependencies": {
