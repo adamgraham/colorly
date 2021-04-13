@@ -3,9 +3,9 @@
   "name": "Colorly",
   "icons": [
     {
-      "src": "favicon.png",
-      "type": "image/png",
-      "sizes": "64x64"
+      "src": "favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "64x64 32x32 24x24 16x16"
     },
     {
       "src": "logo192.png",
