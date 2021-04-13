@@ -3,6 +3,7 @@
 > A versatile collection of color tools for designers and developers encapsulated in one web app.
 
 ### Included Tools
+
 - Tints, Shades, Tones
 - Color Harmonies
 - Color Blindness Visualizer

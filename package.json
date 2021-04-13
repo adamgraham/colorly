@@ -1,17 +1,10 @@
 {
-  "name": "colorly",
+  "name": "@adamgraham/colorly",
   "version": "1.0.3",
   "homepage": "https://adamgraham.github.io/colorly/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^26.0.13",
-    "@types/node": "^14.10.2",
-    "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.8",
     "classnames": "^2.2.6",
     "color": "^3.1.2",
     "color-blind": "^0.1.1",
@@ -22,49 +15,27 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
-    "redux": "^4.0.5",
-    "typescript": "^4.0.2"
+    "redux": "^4.0.5"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "gh-pages": "^3.1.0",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.3.0",
     "prettier": "^2.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn build",
     "deploy": "gh-pages -d build -b dist -m \"Publish build to GitHub pages\"",
-    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
-    "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:react-hooks/recommended",
-      "plugin:jsx-a11y/recommended",
-      "prettier",
-      "prettier/react"
-    ],
-    "plugins": [
-      "react",
-      "jsx-a11y"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": "prettier --write --ignore-unknown"
+    "precommit": "eslint src --fix --quiet",
+    "predeploy": "yarn build",
+    "start": "react-scripts start"
   },
   "browserslist": {
     "production": [
