@@ -39,7 +39,7 @@ const ColorPalette = ({
 
     for (let i = 0; i < length; i++) {
       const weight = (i + 1) * increment;
-      var color = base;
+      let color = base;
 
       switch (type) {
         case types.hues:

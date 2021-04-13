@@ -60,7 +60,9 @@ const AppHeader = ({
 
   useEffect(() => {
     document.addEventListener('paste', (event) => {
-      let paste = (event.clipboardData || window.clipboardData).getData('text');
+      const paste = (event.clipboardData || window.clipboardData).getData(
+        'text'
+      );
       if (isValidColor(paste)) {
         setBaseColor(paste);
       }

@@ -109,6 +109,7 @@ const ColorPicker = React.forwardRef(
           }}
           onKeyDown={enterKeyHandler((event) => {
             try {
+              // eslint-disable-next-line no-new
               new Color(event.target.value.toLowerCase());
               event.target.blur();
             } catch {

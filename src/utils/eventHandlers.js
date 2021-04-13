@@ -3,7 +3,7 @@ export const enterKeyHandler = (callback = () => {}) => (event) => {
     return;
   }
 
-  var handled = false;
+  let handled = false;
   if (event.key === 'Enter') {
     handled = true;
     callback(event);
@@ -18,8 +18,8 @@ export const clearSelection = () => {
   if (document.selection && document.selection.empty) {
     document.selection.empty();
   } else if (window.getSelection) {
-    var sel = window.getSelection();
-    sel.removeAllRanges();
+    const selection = window.getSelection();
+    selection.removeAllRanges();
   }
 };
 
