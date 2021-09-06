@@ -32,7 +32,7 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "deploy": "gh-pages -d build -b dist -m \"Publish build to GitHub pages\"",
+    "deploy": "gh-pages -d build -b public -m \"Publish build to GitHub pages\"",
     "precommit": "eslint src --fix --quiet",
     "predeploy": "yarn build",
     "start": "react-scripts start"
